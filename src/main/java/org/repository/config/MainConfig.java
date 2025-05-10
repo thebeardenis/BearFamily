@@ -83,7 +83,7 @@ public class MainConfig implements WebMvcConfigurer {
         DriverManagerDataSource dm = new DriverManagerDataSource();
         dm.setDriverClassName("org.postgresql.Driver");
 
-        try (InputStream is = Files.newInputStream(Paths.get("config.properties"))) {
+        try (InputStream is = new FileInputStream("config.properties")) {
             Properties properties = new Properties();
             properties.load(is);
             dm.setUsername(properties.getProperty("db_name"));
