@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.Property;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -16,15 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
-import org.thymeleaf.templatemode.TemplateMode;
 
 import javax.sql.DataSource;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 @Configuration
@@ -33,6 +27,7 @@ import java.util.Properties;
 public class MainConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
+    private final File PROPS = new File("C:\\Users\\denis\\IdeaProjects\\bearSite\\src\\main\\java\\org\\repository\\config\\config.properties");
 
     @Autowired
     public MainConfig(ApplicationContext applicationContext) {
@@ -82,8 +77,7 @@ public class MainConfig implements WebMvcConfigurer {
     public DataSource dataSource() {
         DriverManagerDataSource dm = new DriverManagerDataSource();
         dm.setDriverClassName("org.postgresql.Driver");
-
-        try (InputStream is = new FileInputStream("config.properties")) {
+        try (InputStream is = Files.newInputStream(PROPS.toPath())) {
             Properties properties = new Properties();
             properties.load(is);
             dm.setUsername(properties.getProperty("db_name"));
@@ -92,7 +86,6 @@ public class MainConfig implements WebMvcConfigurer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         return dm;
     }
 
