@@ -1,4 +1,4 @@
-!src/main/java/org/repository/config/config.properties
+*.properties
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
