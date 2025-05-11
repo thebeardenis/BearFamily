@@ -25,4 +25,9 @@ public class MainController {
     public String goToContacts() {
         return "contactsPage.html";
     }
+
+    @GetMapping("/profile")
+    public String goToProfile() {
+        return "profilePage.html";
+    }
 }
