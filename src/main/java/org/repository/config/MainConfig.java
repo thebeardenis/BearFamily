@@ -27,7 +27,7 @@ import java.util.Properties;
 public class MainConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
-    private final File PROPS = new File("C:\\Users\\denis\\IdeaProjects\\bearSite\\src\\main\\java\\org\\repository\\config\\config.properties");
+    private final File PROPS = new File("C:\\Users\\denis\\IdeaProjects\\bearSite\\src\\main\\resources\\application.properties");
 
     @Autowired
     public MainConfig(ApplicationContext applicationContext) {
@@ -75,18 +75,13 @@ public class MainConfig implements WebMvcConfigurer {
 
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource dm = new DriverManagerDataSource();
-        dm.setDriverClassName("org.postgresql.Driver");
-        try (InputStream is = Files.newInputStream(PROPS.toPath())) {
-            Properties properties = new Properties();
-            properties.load(is);
-            dm.setUsername(properties.getProperty("db_name"));
-            dm.setPassword(properties.getProperty("db_password"));
-            dm.setUrl(properties.getProperty("db_url"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return dm;
+        DriverManagerDataSource ds = new DriverManagerDataSource();
+
+        ds.setDriverClassName("org.postgresql.Driver");
+        ds.setUrl("jdbc:postgresql://localhost:5432/BearFamily");
+        ds.setUsername("postgres");
+        ds.setPassword("3010312221");
+        return ds;
     }
 
     @Bean

@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -17,7 +17,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a0973cf2-b63c-455f-a96c-2a0ee12d2cf3">
-      <console name="BearFamily@localhost" type="STANDARD" schema="" session="Main" />
+      <console name="BearFamily@localhost" type="STANDARD" schema="public" session="Main"><![CDATA[select * from users_table]]></console>
       <console name="BearFamilyTable" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
@@ -29,6 +29,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="a0973cf2-b63c-455f-a96c-2a0ee12d2cf3" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -57,7 +60,7 @@
           <deprecated-pwd value="MzAxMDMxMjIyMQ==" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />
@@ -527,5 +530,9 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
+    <execution-variable-types />
   </component>
 </project>

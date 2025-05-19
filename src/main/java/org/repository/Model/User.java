@@ -1,6 +1,7 @@
 package org.repository.Model;
 
 
+
 import java.util.UUID;
 
 public class User {
